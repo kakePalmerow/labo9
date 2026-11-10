@@ -100,8 +100,15 @@ def sumar_cola(valores, i=0, acumulado=0):
 # Parte B ---------------------------------------------------------------
 
 def reporte_sucursales(ventas):
-    pass
-
+    sucursales = []
+    ventas_totales = 0
+    for nombre, registros in ventas.items():
+        valores = extraer_valores(registros)
+        cantidad_ventas = len(valores)
+        total = sumar_cola(valores)
+        ventas_totales += total
+        sucursales.append({"nombre": nombre, "cantidad_ventas": cantidad_ventas, "Total" : total})
+    return ({"sucursales": sucursales, "total_general": ventas_totales})
 
 # ---------------------------------------------------------------------
 # Preguntas de análisis (responde debajo de cada pregunta)

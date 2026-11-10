@@ -32,7 +32,17 @@ Restricciones
 
 
 def buscar_codigo(codigos, objetivo, izquierda, derecha):
-    pass
+    
+    if izquierda > derecha:
+        return -1
+
+    medio = (izquierda + derecha) // 2
+
+    if codigos[medio] == objetivo:
+        return medio
+    if objetivo < codigos[medio]:
+        return buscar_codigo(codigos, objetivo, izquierda, medio - 1)
+    return buscar_codigo(codigos, objetivo, medio + 1, derecha)
 
 
 # ---------------------------------------------------------------------
@@ -50,15 +60,15 @@ def buscar_codigo(codigos, objetivo, izquierda, derecha):
 #
 #    Llamada | Izquierda | Derecha | Medio | Decisión
 #    --------|-----------|---------|-------|---------
-#       1    |           |         |       |
-#       2    |           |         |       |
-#       3    |           |         |       |
-#       4    |           |         |       |
+#       1    |     0     |    6    |   3   |     
+#       2    |     0     |    2    |   1   |
+#       3    |     2     |    2    |   2   |
+#       4    |     3     |    2    |   2   |    return -1
 #
 # 4. ¿Qué diferencia hay entre el progreso de esta función y el de
 #    contar_desde_limite()?
-#
-#
+#       - De que esta recorre y analiza la lista dependiendo del valor objetvo, entonces tiene un progreso variado,
+#         mientras que contar_desde_limite() progresa linealmente
 
 
 if __name__ == "__main__":
