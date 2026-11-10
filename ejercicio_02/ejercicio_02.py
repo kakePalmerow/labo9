@@ -32,30 +32,42 @@ Restricciones
 
 
 def contar_desde_limite(valores, limite, i=0):
-    """Cuenta desde la posición i hasta el final. Se asume 0 <= i <= len(valores)."""
-    pass
+    if i >= len(valores):
+        return 0
+    if valores[i] >= limite:
+        cuenta = 1
+    else:
+        cuenta = 0
+
+    return cuenta + contar_desde_limite(valores, limite, i + 1)
 
 
 def contar_desde_limite_iterativo(valores, limite):
     """Cuenta en la lista completa usando un ciclo."""
-    pass
+    limites = 0
+    for valor in valores:
+        if valor >= limite:
+            limites += 1
+
+    return limites
+
 
 
 # ---------------------------------------------------------------------
 # Preguntas de análisis (responde debajo de cada pregunta)
 # ---------------------------------------------------------------------
 # 1. ¿Qué representa el parámetro i?
-#
+#   - El indice de la lista
 #
 # 2. ¿Qué cantidad disminuye a medida que aumenta i?
-#
+#   - La cuenta de limites
 #
 # 3. ¿Qué devuelve una llamada si el elemento actual no cumple la condición?
-#
+#   - Deevuelve 0
 #
 # 4. ¿Qué diferencia hay entre la información pendiente de la versión
 #    recursiva y la de la iterativa?
-#
+#   - Que la recursiva está siempre activa con returns dentro de returns, mientras que la iterativa usa un bucle antes de retornar un valor 
 #
 
 
